@@ -1,6 +1,9 @@
 = AsciiDoc语法指南
+:experimental:
+:icons: font
+:imagesdir: ../media
 
-[lead.]
+[.lead]
 AsciiDoc是一种轻型标记语言，广泛运用于各大公司企业技术文档写作。AsciiDoc类似于Markdown，只需要文本编辑器即可读取或写入，因此入门门槛较低。使用 AsciiDoc 格式书写时，文本内容存储在带有 .adoc 扩展名的纯文本文件中。
 
 就轻量笔记记录而言，Markdown通常会是最优选择。相较于Markdown，AsciiDoc的学习成本更高，但‌支持出版级排版‌（自动编号/交叉引用/印刷控制）、‌企业级扩展性‌（自定义宏/主题/YAML配置）和‌标准化输出‌（多格式统一转换），值得在技术书籍、API文档等专业场景投入学习。
@@ -32,7 +35,7 @@ NOTE: NetApp文档的简体中文经由机器翻译，仅供参考。如与英�
 
 === Asciidoctor
 
-Asciidoctor 是一个快速、开源的文本处理器，用于将 AsciiDoc 解析为文档模型并将其转换为输出格式，如 HTML 5、DocBook 5、手册页、PDF、EPUB 3 和其他格式。Asciidoctor的使用文档中详细介绍了Asciidoc语法，欲了解更多详情，请参阅：
+Asciidoctor 是一个开源的文本处理器，用于将 AsciiDoc 解析为文档模型并将其转换为输出格式，如 HTML 5、DocBook 5、手册页、PDF、EPUB 3 和其他格式。Asciidoctor的使用文档中详细介绍了Asciidoc语法，欲了解更多详情，请参阅：
 
 https://docs.asciidoctor.org/asciidoc/latest/
 
@@ -40,6 +43,9 @@ https://docs.asciidoctor.org/asciidoc/latest/
 
 === 标题
 
+|===
+|语法 | 预览效果
+a|
 ----
 = Page title
 == Level 1 section
@@ -47,10 +53,18 @@ https://docs.asciidoctor.org/asciidoc/latest/
 ==== Level 3 section
 ===== Level 4 section
 ----
+a|
 
-上面展示的是标题的语法，其中 `= Page title` 即为页面标题。一个.adoc文件只能有一个页面标题，但可以同时存在多个子标题。一个标题中=的数量代表的是层级，=的数量越多，次级层级越是靠后。
+image::../media/title-level.png[]
 
-任何标题的下方都需要需空一行，该空行将文档标题与下方内容分开。见下方
+|===
+
+
+
+
+上方展示的是标题语法和对应预览效果，其中 `= Page title` 即为页面标题，含2个及以上 `=` 的标题即子标题。一个.adoc文件只能有一个页面标题，但可以有多个子标题。标题中 `=` 的数量代表的是层级，`=` 的数量越多，该标题层级则越次级。
+
+任何标题的下方都需要需空一行，该空行将文档标题与下方内容分开。示例如下：
 
 
 
