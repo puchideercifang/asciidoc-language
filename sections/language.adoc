@@ -3,18 +3,22 @@
 :icons: font
 :imagesdir: ../media
 
+// For the overall outline of the very 1st draft, refer to Markdown Tutorial, compile the doc with all the necessary syntax.
+// Then try to divide the whole file into sections[basic-syntax;extened-syntax;website relevant], try gernerating the website with sidebar.
+// Generate an EN version when CN version done.
+
 [.lead]
-AsciiDoc是一种轻型标记语言，广泛运用于各大公司企业技术文档写作。AsciiDoc类似于Markdown，只需要文本编辑器即可读取或写入，因此入门门槛较低。使用 AsciiDoc 格式书写时，文本内容存储在带有 .adoc 扩展名的纯文本文件中。
+AsciiDoc 是一种类似于 Markdown 的轻型标记语言，广泛运用于各大公司企业技术文档写作。AsciiDoc 只需要文本编辑器即可读取或写入，因此入门门槛较低。使用 AsciiDoc 格式书写时，文本内容存储在带有 .adoc 扩展名的纯文本文件中。
 
 就轻量笔记记录而言，Markdown通常会是最优选择。相较于Markdown，AsciiDoc的学习成本更高，但‌支持出版级排版‌（自动编号/交叉引用/印刷控制）、‌企业级扩展性‌（自定义宏/主题/YAML配置）和‌标准化输出‌（多格式统一转换），值得在技术书籍、API文档等专业场景投入学习。
 
-本文档将着重介绍常用AsciiDoc语法，帮助读者快速上手实践。
+本文档将着重介绍 AsciiDoc 的常用语法，帮助初学者快速了解一些语法的使用方法，建议配合实操更快上手掌握。
 
-
+//== preparation
 == 使用工具
 
 推荐安装使用 *Visual Studio Code* 编辑器，并安装VSC插件—— *AsciiDoc*。  + 
-尽管亦有像 *Asciidoctor* 这类专门处理.adoc文件的编辑器，VSC (Visual Studio Code) 和对应插件的安装操作都十分方便，并且支持分屏实时预览.adoc文件和通过Git集成实现版本控制，对于新手而言会是更好的选择。
+尽管亦有像 *Asciidoctor* 这类专门处理.adoc文件的编辑器，VSC (Visual Studio Code) 和对应插件的安装操作都十分便捷，并且VSC支持分屏实时预览.adoc文件和通过Git集成实现版本控制，对于新手而言会是更好的选择。
 
 .步骤
 . 根据电脑系统下载安装对应的Visual Studio Code版本：
@@ -22,9 +26,21 @@ AsciiDoc是一种轻型标记语言，广泛运用于各大公司企业技术文
 https://code.visualstudio.com/Download
 . 下载完成后，打开 *Visual Studio Code*。
 . 点击左侧导航栏的 *Extensions* (插件)，或者使用快捷键Ctrl+Shift+X，弹出搜索栏后输入 _AsciiDoc_，选择并点击 *Install* (安装)。
-
+// == how to create a .adoc file
 
 == 参考资料
+
+=== Markdown 教程
+
+Markdown 是一种轻量级的标记语言，可用于在纯文本文档中添加格式化元素。Markdown 教程提供了所有 Markdown 语法元素的基本解释。欲了解更多详情，请参阅：
+
+https://markdown.com.cn/
+
+=== Asciidoctor
+
+Asciidoctor 是一个开源的文本处理器，用于将 AsciiDoc 解析为文档模型并将其转换为输出格式，如 HTML 5、DocBook 5、手册页、PDF、EPUB 3 和其他格式。Asciidoctor的使用文档中详细介绍了 Asciidoc 语法。欲了解更多详情，请参阅：
+
+https://docs.asciidoctor.org/asciidoc/latest/
 
 === NetApp文档
 NetApp是一家智能数据基础设施企业，旗下产品文档编写采用的是AsciiDoc标记语言。NetApp的文档官网亦简要介绍了部分AsciiDoc语法。欲了解更多详情，请参阅：
@@ -32,12 +48,6 @@ NetApp是一家智能数据基础设施企业，旗下产品文档编写采用�
 https://docs.netapp.com/zh-cn/contribute/asciidoc_syntax.html#the-basics
 
 NOTE: NetApp文档的简体中文经由机器翻译，仅供参考。如与英语版出现任何冲突，请与以英语版为准。
-
-=== Asciidoctor
-
-Asciidoctor 是一个开源的文本处理器，用于将 AsciiDoc 解析为文档模型并将其转换为输出格式，如 HTML 5、DocBook 5、手册页、PDF、EPUB 3 和其他格式。Asciidoctor的使用文档中详细介绍了Asciidoc语法，欲了解更多详情，请参阅：
-
-https://docs.asciidoctor.org/asciidoc/latest/
 
 
 == 基础语法
@@ -60,7 +70,34 @@ image::../media/title_level.png[]
 
 上方展示的是标题语法和对应预览效果，其中 `= Page title` 即为页面标题，含2个 `=` 及以上的标题即子标题。一个.adoc文件只能有一个页面标题，但可以有多个子标题，且同一层级的子标题可以同时存在多个。标题中 `=` 的数量代表的是层级，`=` 的数量越多，该标题层级则越次级。
 
-=== 粗体
+=== 段落与换行
+
+|===
+|*语法* | *预览效果*
+a|
+----
+line1
+
+line2
+----
+a|
+line1
+
+line2
+a|
+----
+line1 +
+line2
+----
+a|
+line1 +
+line2
+|===
+
+上方展示的是段落语法和对应预览效果。可以使用一行或多行空白行对文本进行段落分隔。如果希望实现文本换行而不出现空白行，可以在上一段文本的结尾使用空格和 `+` 本实现换行。
+
+=== 强调：粗体与斜体
+==== 粗体
 
 |===
 |*语法* | *预览效果*
@@ -74,7 +111,7 @@ This is a *bold-text* example.
 
 上方展示的是粗体语法和对应预览效果。`*` 所包裹的加粗内容前后需要加空格。
 
-=== 斜体
+==== 斜体
 
 |===
 |*语法* | *预览效果*
@@ -155,6 +192,40 @@ Info for step 2
 
 NOTE: 注意 `.Steps` 和 `. Step 1` 的预览区别。`.` 后直接跟随文本呈现的是斜体小标题，`.` 后空格再跟随文本呈现的是有序列表项。
 
+=== 清单列表
+
+|===
+|*语法* | *预览效果*
+a|
+----
+* [*] checked
+* [x] also checked
+* [ ] not checked
+* normal list item
+----
+a|
+* [*] checked
+* [x] also checked
+* [ ] not checked
+* normal list item
+a|
+----
+[%interactive]
+* [*] checked
+* [x] also checked
+* [ ] not checked
+* normal list item
+----
+a|
+[%interactive]
+* [*] checked
+* [x] also checked
+* [ ] not checked
+* normal list item
+|===
+
+上方展示的是清单列表语法和对应预览效果。第一个清单列表语法的复选框为禁用状态；第二个清单列表语法添加了 `[%interactive]`，复选框为可交互状态。
+
 === 注释/提示/警告
 
 |===
@@ -182,5 +253,50 @@ NOTE: 注释：其中包括读者可能需要了解的额外信息。
 TIP: 提示：提示可提供有用的信息，帮助用户执行某项操作或了解某项操作。
 
 CAUTION: 警告：警告会建议读者小心操作。在极少数情况下使用此功能。
+
+=== 代码
+
+|===
+|*语法* | *预览效果*
+a|
+----
+This is a `code` example.
+----
+a|
+This is a `code` example.
+a|
+----
+....
+This is a code-block example.
+
+This is a code-block example.
+....
+----
+a|
+....
+This is a code-block example.
+
+This is a code-block example.
+....
+a|
+....
+----
+This is a code-block example.
+
+This is a code-block example.
+----
+....
+a|
+----
+This is a code-block example.
+
+This is a code-block example.
+----
+|===
+
+上方展示的是代码语法和对应预览效果。``` 包裹起来的内容即显示为代码形式。 +
+如果有大量代码集中出现时，可使用代码块语法，在上下方使用一对 `....` 或 `----` 将内容包裹起来。
+
+
 
 
