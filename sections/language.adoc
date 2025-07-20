@@ -296,8 +296,84 @@ This is a code-block example.
 |===
 
 上方展示的是代码语法和对应预览效果。``` 包裹起来的内容即显示为代码形式。 +
-如果有大量代码集中出现时，可使用代码块语法，在上下方使用一对 `....` 或 `----` 将内容包裹起来。
+如果有大量代码集中出现时，可使用代码块语法，在上下方使用一对 `....` 或 `----` 将代码块内容包裹起来。
 
+=== 链接
 
+* <<链接跳转到外部网站>>
 
+* <<链接跳转到同一页面上的某个标题>>
 
+* <<链接跳转到文档中的其他页面>>
+
+==== 链接跳转到外部站点
+
+|===
+|*语法* | *预览效果*
+a|
+----
+For more details, see: https://docs.asciidoctor.org/asciidoc/latest/
+----
+a|
+For more details, see: https://docs.asciidoctor.org/asciidoc/latest/
+a|
+----
+For more details, see https://docs.asciidoctor.org/asciidoc/latest/[AsciiDoc Language Documentation^].
+----
+a|
+For more details, see https://docs.asciidoctor.org/asciidoc/latest/[AsciiDoc Language Documentation^].
+|===
+
+上方展示的是链接跳转到外部网站的语法和对应预览效果。直接粘贴外部网站地址到.adoc文件时，呈现的也是外部网站地址；粘贴外部网站地址后，再使用 `[ ]` 将部分文本包裹起来，此时呈现的是 `[ ]` 内的文本且附带跳转链接，`[ ]` 内 `^` 的作用是使对应链接在新的浏览器标签页中打开。
+
+==== 链接跳转到同一页面上的某个标题
+
+|===
+|*语法* | *预览效果*
+a|
+----
+For more details, see <<section title>>.
+----
+a|
+For more details, see <<section title>>.
+|===
+
+上方展示的是链接跳转到同一页面上的某个标题的语法和对应预览效果。此时 `<< >>` 内包裹的是同一份.adoc文件里出现的标题文本。
+
+==== 链接跳转到文档中的其他页面
+
+|===
+|*语法* | *预览效果*
+a|
+----
+For more details, see link:file_name.html[Link text].
+----
+a|
+For more details, see link:file_name.html[Link text].
+|===
+
+上方展示的是链接跳转到文档中其他页面的语法和对应预览效果。`link:` 后跟随的是跳转目标的文件名，同样可以使用 `[ ]` 来定义呈现附带跳转的文本。
+
+如果要指定链接跳转到某个文件中的某个章节，还要添加一个 `#` 后跟随对应的标题文本，且标题文本中间的空格要替换为 `-`，如下方示例：
+
+|===
+|*语法* | *预览效果*
+a|
+----
+For more details, see link:file_name.html#section-title[Link text].
+----
+a|
+For more details, see link:file_name.html#section-title[Link text].
+|===
+
+=== 图片
+
+|===
+|*语法* | *预览效果*
+a|
+----
+
+----
+a|
+
+|===
